@@ -1,0 +1,28 @@
+<nav class="sticky top-0 z-50 glass shadow-lg border-b border-white/30">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="h-16 flex items-center justify-between">
+      <a
+        routerLink="/home"
+        class="flex items-center gap-2">
+        <span class="text-2xl">🍩</span>
+        <span class="font-Simpsonfont simpsons-title
+        text-2xl sm:text-3xl
+        font-bold select-none">
+          The Simpsons
+        </span>
+      </a>
+      <div class="hidden sm:flex items-center gap-1">
+        @for (ruta of rutas; track ruta) {
+          <a routerLink="{{ruta.path}}"
+             routerLinkActive="bg-yellow-300/80 text-blue-900"
+             class=
+               "px-3 py-2 rounded-md text-blue-900
+               hover:bg-yellow-200 hover:text-blue-900
+               font-semibold transition">
+            {{ ruta.titulo }}
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+</nav>
