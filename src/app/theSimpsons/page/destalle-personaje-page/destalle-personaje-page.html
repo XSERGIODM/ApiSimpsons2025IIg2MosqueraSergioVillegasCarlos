@@ -1,1 +1,182 @@
-<p>destalle-personaje-page works!</p>
+<!-- Detalle de Personaje - The Simpsons -->
+<style>
+
+</style>
+
+<!-- Encabezado -->
+<header class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-sky-300 via-sky-200 to-yellow-100"></div>
+
+  <!-- Nubes -->
+  <div class="pointer-events-none absolute inset-0">
+    <svg class="absolute top-6 left-4 w-40 md:w-56 cloud" viewBox="0 0 200 60" fill="white" aria-hidden="true">
+      <circle cx="40" cy="35" r="20"></circle>
+      <circle cx="70" cy="30" r="28"></circle>
+      <circle cx="100" cy="35" r="22"></circle>
+      <rect x="40" y="35" width="100" height="18" rx="9"></rect>
+    </svg>
+    <svg class="absolute top-14 right-10 w-56 md:w-72 cloud" style="animation: floatY 7s ease-in-out infinite" viewBox="0 0 240 70" fill="white" aria-hidden="true">
+      <circle cx="60" cy="40" r="22"></circle>
+      <circle cx="100" cy="34" r="30"></circle>
+      <circle cx="140" cy="40" r="24"></circle>
+      <rect x="60" y="40" width="120" height="20" rx="10"></rect>
+    </svg>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 pt-16 pb-10 text-center">
+    <h1 class="simpsons-title [font-family:var(--font-Simpsonfont)] text-5xl md:text-6xl font-black drop-shadow-xl">
+      Detalle del Personaje
+    </h1>
+    <p class="mt-3 text-blue-900/90 text-lg md:text-xl max-w-2xl mx-auto">
+      Un vistazo épico al ciudadano más amarillo de Springfield. El retrato salta hacia ti al pasar el mouse.
+    </p>
+  </div>
+</header>
+
+<main class="bg-yellow-100">
+  <section class="max-w-7xl mx-auto px-4 pb-14">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+
+      <!-- Spotlight 3D -->
+      <div class="detail-3d lg:col-span-3">
+        <div class="stage conic-border rounded-3xl">
+          <div class="content rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+            <!-- Polaroid (fondo) -->
+            <div class="polaroid absolute inset-4 rounded-2xl bg-gradient-to-br from-yellow-100 to-sky-100 border-4 border-yellow-300/70 shadow-inner"></div>
+
+            <!-- Donut orbit -->
+            <div class="orbit absolute -right-1 -top-1 sm:right-2 sm:top-2 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-pink-200/80 border-4 border-yellow-400 grid place-items-center spin-slow shadow">
+              <span class="text-2xl sm:text-3xl">🍩</span>
+            </div>
+
+            <!-- Retrato -->
+            <div class="relative grid place-items-center min-h-72 md:min-h-80">
+              <!-- Sustituye src por el retrato real cuando integres la API -->
+              <img class="portrait relative z-10 object-contain select-none w-72 h-auto"
+                   [ngSrc]="obtenerImagen(500, personaje().portrait_path)"
+                   [alt]="personaje().name"
+                   fill
+                   priority
+              />
+            </div>
+
+            <!-- Badges -->
+            <div class="absolute left-4 top-4 badge">
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-yellow-300 text-blue-900 font-extrabold shadow">
+                Springfield
+              </span>
+            </div>
+            <div class="absolute right-4 top-4 badge">
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-sky-300 text-blue-900 font-bold shadow">
+                🍺 {{personaje().phrases[0]}}
+              </span>
+            </div>
+
+            <!-- Nombre / Ocupación -->
+            <div class="relative z-20 mt-4 text-center">
+              <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900">{{personaje().name}}</h2>
+              <p class="text-blue-900/75 -mt-0.5">{{personaje().occupation}}</p>
+              <div class="mt-3 flex justify-center gap-2">
+                <span class="chip px-3 py-1 rounded-full bg-yellow-300/80 text-blue-900 font-semibold text-sm">{{personaje().age}} años</span>
+                <span class="chip px-3 py-1 rounded-full bg-pink-300/80 text-blue-900 font-semibold text-sm">{{personaje().status}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel de información -->
+      <aside class="lg:col-span-2 space-y-6">
+        <!-- Tarjeta datos -->
+        <div class="rounded-3xl bg-white shadow-xl p-6">
+          <h3 class="text-2xl font-extrabold text-blue-900">Información</h3>
+          <div class="mt-4 grid grid-cols-2 gap-4 text-blue-900/90">
+            <div class="rounded-xl bg-yellow-50 border border-yellow-200 p-4">
+              <div class="text-sm opacity-70">Nombre</div>
+              <div class="font-bold">{{personaje().name}}</div>
+            </div>
+            <div class="rounded-xl bg-yellow-50 border border-yellow-200 p-4">
+              <div class="text-sm opacity-70">Edad</div>
+              <div class="font-bold">{{personaje().age}}</div>
+            </div>
+            <div class="rounded-xl bg-yellow-50 border border-yellow-200 p-4">
+              <div class="text-sm opacity-70">Ocupación</div>
+              <div class="font-bold">{{personaje().occupation}}</div>
+            </div>
+            <div class="rounded-xl bg-yellow-50 border border-yellow-200 p-4">
+              <div class="text-sm opacity-70">Género</div>
+              <div class="font-bold">{{personaje().gender}}</div>
+            </div>
+            <div class="rounded-xl bg-yellow-50 border border-yellow-200 p-4 col-span-2">
+              <div class="text-sm opacity-70">Fecha de nacimiento</div>
+              <div class="font-bold">{{personaje().birthdate}}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frases -->
+        <div class="rounded-3xl bg-white shadow-xl p-6">
+          <h3 class="text-2xl font-extrabold text-blue-900">Frases célebres</h3>
+          <ul class="mt-4 space-y-2 text-blue-900/90">
+            @for (frase of personaje().phrases; track frase){
+              <li class="rounded-xl bg-sky-50 border border-sky-200 px-4 py-2">{{frase}}</li>
+            }
+          </ul>
+        </div>
+
+        <!-- Acciones -->
+        <div class="rounded-3xl bg-white shadow-xl p-6">
+          <h3 class="text-2xl font-extrabold text-blue-900">Acciones</h3>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a routerLink="/personaje" class="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold px-4 py-2 rounded-xl shadow">
+              ← Volver a personajes
+            </a>
+            <a routerLink="/episodios" class="inline-flex items-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-bold px-4 py-2 rounded-xl shadow">
+              📺 Ver episodios
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Sección extra: ficha rápida -->
+  <section class="max-w-7xl mx-auto px-4 pb-12">
+    <div class="rounded-3xl bg-blue-900 text-white p-6 sm:p-8 shadow-xl overflow-hidden relative">
+      <div class="absolute -right-16 -top-16 w-48 h-48 bg-yellow-300 rounded-full opacity-30 blur-2xl"></div>
+      <h3 class="text-2xl sm:text-3xl font-extrabold">Ficha rápida</h3>
+      <div class="mt-4 grid sm:grid-cols-4 gap-4 text-center">
+        <div class="rounded-2xl bg-blue-800/40 p-4">
+          <div class="text-2xl">🧍</div>
+          <div class="mt-1 text-yellow-300 font-bold">{{ personaje().name }}</div>
+        </div>
+        <div class="rounded-2xl bg-blue-800/40 p-4">
+          <div class="text-2xl">🛠️</div>
+          <div class="mt-1 text-yellow-300 font-bold">{{personaje().occupation}}</div>
+        </div>
+        <div class="rounded-2xl bg-blue-800/40 p-4">
+          <div class="text-2xl">🎂</div>
+          <div class="mt-1 text-yellow-300 font-bold">{{ personaje().birthdate }}</div>
+        </div>
+        <div class="rounded-2xl bg-blue-800/40 p-4">
+          <div class="text-2xl">❤️</div>
+          <div class="mt-1 text-yellow-300 font-bold">{{ personaje().status }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!--
+Integración con la API (PersonajeType):
+export interface PersonajeType {
+  birthdate: Date; occupation: string; gender: string; name: string; portrait_path: string;
+  id: number; phrases: string[]; age: number; status: string;
+}
+
+Cuando el componente provea el personaje, reemplaza los valores de ejemplo por expresiones:
+- Imagen (retrato): [src]="personaje().portrait_path" o construye la URL base si aplica
+- Nombre/ocupación/edad/estado/género/fecha: {{ personaje().name }} etc.
+- Frases: @for (f of personaje().phrases; track f) { <li>“{{ f }}”</li> }
+Mantén la estructura (.detail-3d .stage .polaroid .portrait .badge .chip .orbit) para conservar el efecto 3D.
+-->

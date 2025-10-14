@@ -1,0 +1,84 @@
+/* Efecto 3D exclusivo para página de detalle:
+     - Stage inclina y avanza
+     - Marco "polaroid" retrocede
+     - Retrato (PNG/WebP) flota hacia el frente
+     - Badges/Donut orbit elevan con parallax */
+.detail-3d {
+  perspective: 1300px;
+  -webkit-perspective: 1300px;
+}
+.detail-3d .stage {
+  transform-style: preserve-3d;
+  transition: transform 480ms cubic-bezier(.2,.8,.2,1), box-shadow 480ms ease;
+  will-change: transform, box-shadow;
+}
+.detail-3d:hover .stage {
+  transform: rotateX(6deg) rotateY(-8deg) translateZ(10px);
+  box-shadow: 0 30px 70px rgba(0,0,0,.28);
+}
+
+/* Polaroid: marco retrocede sutilmente */
+.detail-3d .polaroid {
+  transform: translateZ(-28px) rotateZ(-3deg) scale(1.02);
+  transition: transform 480ms cubic-bezier(.2,.8,.2,1), opacity 300ms ease;
+  will-change: transform, opacity;
+  opacity: .97;
+}
+.detail-3d:hover .polaroid {
+  transform: translateZ(-50px) rotateZ(-5deg) scale(1);
+  opacity: 1;
+}
+
+/* Retrato: protagonista al frente */
+.detail-3d .portrait {
+  transform: translateZ(36px) rotateX(0) rotateY(0) scale(1);
+  transition: transform 480ms cubic-bezier(.2,.8,.2,1), filter 360ms ease;
+  will-change: transform, filter;
+  filter: drop-shadow(0 16px 24px rgba(0,0,0,.28));
+}
+.detail-3d:hover .portrait {
+  transform: translateZ(70px) rotateX(2deg) rotateY(-2deg) scale(1.06);
+  filter: drop-shadow(0 28px 40px rgba(0,0,0,.38));
+}
+
+/* Chips/insignias con leve parallax */
+.detail-3d .chip,
+.detail-3d .badge,
+.detail-3d .orbit {
+  transform: translateZ(48px);
+  transition: transform 480ms cubic-bezier(.2,.8,.2,1), opacity 300ms ease;
+  will-change: transform, opacity;
+}
+.detail-3d:hover .badge { transform: translateZ(66px) rotateZ(-2deg); }
+.detail-3d:hover .chip  { transform: translateZ(56px); }
+.detail-3d:hover .orbit { transform: translateZ(64px) rotateZ(6deg); }
+
+/* Donut orbit simple */
+@keyframes donutSpin { to { transform: rotate(360deg) } }
+.spin-slow { animation: donutSpin 16s linear infinite; }
+
+/* Clamp sinopsis/frases */
+.clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Borde conic para tarjeta de perfil */
+.conic-border {
+  position: relative;
+}
+.conic-border::before {
+  content: '';
+  position: absolute; inset: -2px;
+  border-radius: 1.5rem;
+  background: conic-gradient(from 180deg at 50% 50%, #ffd90f, #7dd3fc, #fdcfe4, #ffd90f);
+  z-index: 0;
+  filter: blur(.5px);
+}
+.conic-border > .content {
+  position: relative; z-index: 1;
+  border-radius: 1.4rem;
+  background: white;
+}
