@@ -3,12 +3,14 @@ import {HeaderEpisodios} from './header-episodios/header-episodios';
 import {SeccionListaEpisodios} from './seccion-lista-episodios/seccion-lista-episodios';
 import {EpisodiosService} from '../../service/episodios-service';
 import type {EpisodiosListType} from '../../type/EpisodiosType';
+import {LoaderShared} from '../../shared/loader-shared/loader-shared';
 
 @Component({
   selector: 'app-episodios-page',
   imports: [
     HeaderEpisodios,
-    SeccionListaEpisodios
+    SeccionListaEpisodios,
+    LoaderShared
   ],
   templateUrl: './episodios-page.html',
 })

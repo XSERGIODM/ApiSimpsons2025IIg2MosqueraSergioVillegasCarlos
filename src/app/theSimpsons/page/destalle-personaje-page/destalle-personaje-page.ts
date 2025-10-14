@@ -6,12 +6,14 @@ import {ActivatedRoute, RouterLink} from '@angular/router';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {PersonajeService} from '../../service/personaje-service';
 import {map} from 'rxjs';
+import {LoaderShared} from '../../shared/loader-shared/loader-shared';
 
 @Component({
   selector: 'app-destalle-personaje-page',
   imports: [
     NgOptimizedImage,
-    RouterLink
+    RouterLink,
+    LoaderShared
   ],
   templateUrl: './destalle-personaje-page.html',
   styleUrl: './destalle-personaje.css'

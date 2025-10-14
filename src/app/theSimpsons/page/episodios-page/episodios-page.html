@@ -2,24 +2,9 @@
 <app-header-episodios></app-header-episodios>
 
 <main class="bg-yellow-100">
-  <!-- Grid de episodios (demo con datos de ejemplo).
-       Cuando tengas la data de la API (EpisodiosListType.results), reemplaza por:
-       @for (e of episodios; track e.id) { ... } -->
-  <app-seccion-lista-episodios [episodioListaPaginados]="episodioListType()"></app-seccion-lista-episodios>
+  @if (episodiosService.cargando()){
+    <div class="h-screen"><app-loader-shared></app-loader-shared></div>
+  } @else {
+    <app-seccion-lista-episodios [episodioListaPaginados]="episodioListType()"></app-seccion-lista-episodios>
+  }
 </main>
-
-<!--
-Para integrar con la API (EpisodiosType):
-export interface EpisodiosListType { next: string; pages: number; count: number; results: EpisodiosType[]; }
-export interface EpisodiosType {
-  episode_number: number; airdate: Date; image_path: string; name: string; season: number; id: number; synopsis: string;
-}
-Cuando el componente provea los datos, reemplaza los ítems de ejemplo por:
-@for (e of episodios; track e.id) {
-  - Imagen (poster): e.image_path
-  - Título: e.name
-  - Badges: "T{e.season}E{e.episode_number}" y fecha e.airdate
-  - Sinopsis: e.synopsis (aplicar .clamp-3)
-}
-Mantén la estructura (.episode-3d .tv-card .backdrop .bezel .screen .badge .chip) para conservar el efecto 3D específico de episodios.
--->

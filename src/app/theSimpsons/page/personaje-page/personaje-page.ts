@@ -4,12 +4,14 @@ import {SeccionListaPersonaje} from './seccion-lista-personaje/seccion-lista-per
 import {PersonajeService} from '../../service/personaje-service';
 import {PersonajeListType} from '../../type/PersonajeType';
 import {map} from 'rxjs';
+import {LoaderShared} from '../../shared/loader-shared/loader-shared';
 
 @Component({
   selector: 'app-personaje-page',
   imports: [
     HeaderPersonaje,
-    SeccionListaPersonaje
+    SeccionListaPersonaje,
+    LoaderShared
   ],
   templateUrl: './personaje-page.html',
 })
