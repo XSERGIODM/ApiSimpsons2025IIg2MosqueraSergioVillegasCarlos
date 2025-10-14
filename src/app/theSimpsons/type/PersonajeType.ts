@@ -1,13 +1,11 @@
-// YApi QuickType插件生成，具体参考文档:https://plugins.jetbrains.com/plugin/18847-yapi-quicktype/documentation
-
-export interface PersonajeType {
+export interface PersonajeListType {
     next:    string;
     pages:   number;
     count:   number;
-    results: Result[];
+    results: PersonajeType[];
 }
 
-export interface Result {
+export interface PersonajeType {
     birthdate:     Date;
     occupation:    string;
     gender:        string;

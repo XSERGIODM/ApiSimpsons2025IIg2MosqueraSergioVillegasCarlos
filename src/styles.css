@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Simpsonfont';
+  src: url('assets/fonts/Simpsonfont.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme {
+  --font-Simpsonfont: 'Simpsonfont', sans-serif;
+  --color-mierda: #b45309;
+}
+
+:root { --simpsons-yellow:#ffd90f; --simpsons-blue:#0ea5e9; --simpsons-sky:#7dd3fc; --simpsons-pink:#fdcfe4; --simpsons-brown:#b45309; }
+.simpsons-title{
+  color: var(--simpsons-yellow);
+  text-shadow: 3px 3px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  letter-spacing: 1px;
+}
+@keyframes floatY { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+@keyframes driftX { 0%{ transform: translateX(-10%) } 100% { transform: translateX(110%) } }
+@keyframes donutSpin { to { transform: rotate(360deg) } }
+@keyframes scrollX { 0%{ transform: translateX(0) } 100% { transform: translateX(-50%) } }
+.cloud { filter: drop-shadow(0 8px 10px rgba(0,0,0,.12)); }
+.animate-float { animation: floatY 6s ease-in-out infinite; }
+.animate-drift { animation: driftX 60s linear infinite; }
+.glass { backdrop-filter: blur(8px); background: rgba(255,255,255,.35); }
+.spin-slow { animation: donutSpin 14s linear infinite; }
+.marquee-track { animation: scrollX 22s linear infinite; }

@@ -1,0 +1,21 @@
+<app-header-personaje></app-header-personaje>
+
+<main class="bg-yellow-100 pt-16">
+  <!-- Grid de personajes (demo con datos de muestra) -->
+  <!-- NOTA: Cuando tengas los datos de la API, reemplaza estas tarjetas estáticas por un bucle.
+       Ejemplo (no incluido para evitar imports adicionales en el componente):
+       @for (p of personajes; track p.id) { ... usa p.name, p.occupation, p.portrait_path ... } -->
+  <app-seccion-lista-personaje [personajesPaginados]= "personajeListType()"></app-seccion-lista-personaje>
+</main>
+
+<!--
+Para integrar con la API:
+- Cada tarjeta representa un objeto de tipo PersonajeType:
+  {
+    "id": 1, "age": 39, "birthdate": "1956-05-12", "gender": "Male",
+    "name": "Homer Simpson", "occupation": "Safety Inspector",
+    "portrait_path": "/character/1.webp", "phrases": [...], "status": "Alive"
+  }
+- Sustituye las tarjetas de ejemplo por un bucle en la plantilla cuando el componente provea la data.
+- Mantén las clases y estructura (.character-3d .inner .frame .portrait) para conservar el efecto 3D.
+-->
