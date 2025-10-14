@@ -1,0 +1,7 @@
+<section class="max-w-7xl mx-auto px-4 pb-12">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    @for (episodio of episodioListaPaginados().results; track episodio.id){
+      <app-tarjeta-episodios-shared [episodio]="episodio"></app-tarjeta-episodios-shared>
+    }
+  </div>
+</section>

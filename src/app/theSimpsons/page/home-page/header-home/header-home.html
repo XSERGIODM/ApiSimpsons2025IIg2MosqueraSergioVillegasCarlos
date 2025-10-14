@@ -1,4 +1,4 @@
-<header class="relative overflow-hidden">
+<header class="relative overflow-hidden min-h-screen flex flex-col">
   <div class="absolute inset-0 bg-gradient-to-b from-sky-300 via-sky-200 to-yellow-100"></div>
   <div
     class="absolute -right-10 -top-10 w-40 h-40 sm:w-56 sm:h-56 bg-yellow-300 rounded-full ring-8 ring-yellow-200/60"></div>
@@ -27,7 +27,7 @@
     </svg>
   </div>
 
-  <div class="relative max-w-7xl mx-auto px-4 pt-20 pb-24 sm:pt-28 sm:pb-36 text-center">
+  <div class="relative max-w-7xl mx-auto px-4 pt-20 pb-24 sm:pt-28 sm:pb-36 text-center flex-1 flex flex-col justify-center">
     <h1 class="simpsons-title font-Simpsonfont text-5xl sm:text-6xl font-black drop-shadow-xl">¡Bienvenido a
       Springfield!</h1>
     <p class="mt-4 text-blue-900/90 text-lg sm:text-xl max-w-2xl mx-auto">
@@ -51,9 +51,12 @@
   </div>
 
   <div class="relative">
-    <svg class="w-full h-12 text-yellow-100" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
-      <path fill="currentColor"
-            d="M0,32L60,48C120,64,240,96,360,101.3C480,107,600,85,720,64C840,43,960,21,1080,21.3C1200,21,1320,43,1380,53.3L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+    <svg class="absolute w-[28rem] opacity-10 cloud animate-drift" viewBox="0 0 320 90" fill="white"
+         aria-hidden="true">
+      <circle cx="80" cy="50" r="28"></circle>
+      <circle cx="130" cy="44" r="36"></circle>
+      <circle cx="180" cy="50" r="30"></circle>
+      <rect x="80" y="50" width="160" height="26" rx="13"></rect>
     </svg>
   </div>
 </header>

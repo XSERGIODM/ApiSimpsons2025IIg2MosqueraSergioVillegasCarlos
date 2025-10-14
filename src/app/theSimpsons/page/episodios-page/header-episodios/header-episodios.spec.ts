@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SeccionFamiliaHome } from './seccion-familia-home';
+import { HeaderEpisodios } from './header-episodios';
 
-describe('SeccionFamiliaHome', () => {
-  let component: SeccionFamiliaHome;
-  let fixture: ComponentFixture<SeccionFamiliaHome>;
+describe('HeaderEpisodios', () => {
+  let component: HeaderEpisodios;
+  let fixture: ComponentFixture<HeaderEpisodios>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SeccionFamiliaHome]
+      imports: [HeaderEpisodios]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SeccionFamiliaHome);
+    fixture = TestBed.createComponent(HeaderEpisodios);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
