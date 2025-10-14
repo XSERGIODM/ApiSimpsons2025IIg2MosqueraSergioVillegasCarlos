@@ -1,0 +1,73 @@
+/* Efecto 3D para tarjetas de lugares (distinto al de personajes):
+     - La imagen del lugar se "aleja" (va hacia atrás)
+     - Un cartel/placa y pines/mapa emergen hacia el frente
+     - Carretera/base se profundiza para reforzar la perspectiva */
+.place-3d {
+  perspective: 1200px;
+  -webkit-perspective: 1200px;
+}
+.place-3d .card {
+  transform-style: preserve-3d;
+  transition: transform 450ms cubic-bezier(.2,.8,.2,1), box-shadow 450ms ease;
+  will-change: transform, box-shadow;
+}
+.place-3d:hover .card {
+  transform: rotateX(5deg) rotateY(8deg) translateZ(8px);
+  box-shadow: 0 25px 60px rgba(0,0,0,.25);
+}
+
+/* Imagen del lugar: se va hacia atrás al hacer hover */
+.place-3d .image {
+  transform: translateZ(-18px) scale(1.02);
+  transition: transform 450ms cubic-bezier(.2,.8,.2,1), filter 350ms ease, opacity 300ms ease;
+  will-change: transform, filter, opacity;
+  filter: drop-shadow(0 12px 18px rgba(0,0,0,.2));
+}
+.place-3d:hover .image {
+  transform: translateZ(-38px) rotateX(-2deg) scale(0.985);
+  filter: drop-shadow(0 24px 32px rgba(0,0,0,.35));
+}
+
+/* Cartel (placa con nombre) emerge hacia el frente */
+.place-3d .sign {
+  transform: translateZ(24px) rotateZ(0deg);
+  transition: transform 450ms cubic-bezier(.2,.8,.2,1), box-shadow 350ms ease;
+  will-change: transform, box-shadow;
+}
+.place-3d:hover .sign {
+  transform: translateZ(46px) rotateZ(-1.5deg) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+
+/* Pin/mapa y chips con leve parallax hacia el frente */
+.place-3d .chip,
+.place-3d .pin {
+  transform: translateZ(30px);
+  transition: transform 450ms cubic-bezier(.2,.8,.2,1), opacity 300ms ease;
+  will-change: transform, opacity;
+}
+.place-3d:hover .pin {
+  transform: translateZ(54px) rotateZ(4deg) translateY(-2px);
+}
+.place-3d:hover .chip {
+  transform: translateZ(40px);
+}
+
+/* Carretera/base: se profundiza al hacer hover */
+.place-3d .road {
+  transform: translateZ(-32px) scaleX(1.02);
+  transition: transform 450ms cubic-bezier(.2,.8,.2,1), opacity 300ms ease;
+  will-change: transform, opacity;
+  opacity: 0.95;
+}
+.place-3d:hover .road {
+  transform: translateZ(-60px) scaleX(1.06);
+  opacity: 1;
+}
+
+/* Acento radial para dar brillo cartoon */
+.place-3d .accent {
+  background: radial-gradient(80% 60% at 50% 20%, rgba(255,255,255,.45), rgba(255,255,255,0));
+  mix-blend-mode: screen;
+  pointer-events: none;
+}

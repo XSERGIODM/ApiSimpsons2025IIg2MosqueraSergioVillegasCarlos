@@ -1,29 +1,28 @@
 import {Component, input, signal} from '@angular/core';
-import {PersonajeType} from '../../type/PersonajeType';
 import {environment} from '../../../../environments/environment';
+import {LugarType} from '../../type/LugarType';
 import {NgOptimizedImage} from '@angular/common';
-import {RouterLink} from '@angular/router';
 
 @Component({
-  selector: 'app-tarjetas-peronajes-shared',
+  selector: 'app-tarjeta-lugares-shared',
   imports: [
-    NgOptimizedImage,
-    RouterLink
+    NgOptimizedImage
   ],
-  templateUrl: './tarjetas-peronajes-shared.html',
-  styleUrl: './tarjetas-peronajes-shared.css'
+  templateUrl: './tarjeta-lugares-shared.html',
+  styleUrl: './tarjeta-lugares-shared.css'
 })
-export class TarjetasPeronajesShared {
-  personaje = input.required<PersonajeType>();
+export class TarjetaLugaresShared {
+
+  lugar = input.required<LugarType>();
 
   urlImagenBase = signal<string>(environment.apiImagenUrl)
 
   obtenerImagen(size:number, path:string): String{
     return this.urlImagenBase()+'/'+size +path;
   }
-  truncarFrase(frase: string): string {
+  /*truncarFrase(frase: string): string {
     if (!frase) return 'No disponible';
     const maxLength = 20; // Ajusta según el espacio disponible
     return frase.length > maxLength ? frase.substring(0, maxLength) + '...' : frase;
-  }
+  }*/
 }

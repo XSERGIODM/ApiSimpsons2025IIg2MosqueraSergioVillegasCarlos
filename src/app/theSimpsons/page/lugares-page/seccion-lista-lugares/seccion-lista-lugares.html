@@ -1,0 +1,12 @@
+<section class="max-w-7xl mx-auto px-4 pb-12">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    @for (lugar of listaLugaresPaginado().results; track lugar){
+      <app-tarjeta-lugares-shared [lugar]="lugar"></app-tarjeta-lugares-shared>
+    }
+  </div>
+
+  <!-- Nota de integración -->
+  <p class="mt-8 text-center text-blue-900/70 text-sm">
+    Integra con tu API mapeando cada tarjeta a LugarType.results: usa name, town, use e image_path.
+  </p>
+</section>

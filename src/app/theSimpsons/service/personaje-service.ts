@@ -13,20 +13,16 @@ export class PersonajeService {
 
   apiUrl= environment.apiUrl;
   http= inject(HttpClient);
-
-
-  constructor() {
-    console.log(this.listarpersonajes(0));
-  }
+  enpoint = '/characters';
 
 
 
   listarpersonajes(page: number): Observable<PersonajeListType>{
-    return this.http.get<PersonajeListType>(this.apiUrl+'/characters?page='+page);
+    return this.http.get<PersonajeListType>(this.apiUrl+this.enpoint+'?page='+page);
   }
 
   obtenerPersonajePorId(id: number): Observable<PersonajeType>{
-    return this.http.get<PersonajeType>(this.apiUrl+'/characters/'+id);
+    return this.http.get<PersonajeType>(this.apiUrl+this.enpoint+'/'+id);
   }
 
 }

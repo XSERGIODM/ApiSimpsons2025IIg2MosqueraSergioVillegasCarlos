@@ -13,12 +13,6 @@ export const routes: Routes = [
   {
     path: 'personaje',
     loadComponent: () => import('./theSimpsons/page/personaje-page/personaje-page'),
-    children:[
-      {
-        path: 'destalle-personaje/:id',
-        loadComponent: () => import('./theSimpsons/page/destalle-personaje-page/destalle-personaje-page')
-      },
-    ]
   },
   {
     path: 'lugares',
@@ -27,6 +21,10 @@ export const routes: Routes = [
   {
     path: 'episodios',
     loadComponent: () => import('./theSimpsons/page/episodios-page/episodios-page')
+  },
+  {
+    path: 'detalle-personaje/:id',
+    loadComponent: () => import('./theSimpsons/page/destalle-personaje-page/destalle-personaje-page')
   },
   {
     path: 'about',

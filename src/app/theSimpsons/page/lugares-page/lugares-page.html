@@ -1,1 +1,25 @@
-<p>lugares-page works!</p>
+<!-- Encabezado -->
+<app-header-lugares></app-header-lugares>
+
+<main class="bg-yellow-100">
+  <!-- Grid de lugares (demo con datos de muestra).
+       Cuando tengas la data de la API (LugarType.results), reemplaza por @for (l of lugares; track l.id) -->
+  <app-seccion-lista-lugares [listaLugaresPaginado]= "lugares()"></app-seccion-lista-lugares>
+</main>
+
+<!--
+Para integrar con la API (LugarType):
+interface LugarType {
+  next: string; pages: number; count: number; results: Result[];
+}
+interface Result { town: string; image_path: string; use: string; name: string; id: number; }
+
+Cuando el componente provea los datos, reemplaza las tarjetas de ejemplo por:
+@for (l of lugares; track l.id) {
+  - Imagen: l.image_path  (idealmente PNG/WebP con transparencia)
+  - Título (cartel): l.name
+  - Pin: l.town
+  - Chips: l.use u otros tags derivados
+}
+Mantén la estructura (.place-3d .card .image .sign .pin .chip .road) para conservar el efecto 3D específico de lugares.
+-->
