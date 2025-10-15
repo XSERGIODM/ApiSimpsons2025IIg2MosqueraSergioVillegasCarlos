@@ -1,9 +1,28 @@
 <app-header-personaje></app-header-personaje>
 
-<main class="bg-yellow-100 pt-16">
+<main class="bg-yellow-100 pt-16 min-h-screen">
   @if (personajeService.cargando()){
-    <div class="h-screen"><app-loader-shared></app-loader-shared></div>
+    <div class="h-screen">
+      <app-loader-shared></app-loader-shared>
+    </div>
   } @else {
-    <app-seccion-lista-personaje [personajesPaginados]= "personajeListType()"></app-seccion-lista-personaje>
+    <app-paginacion-shared
+      [paginaActual]="paginaActual()"
+      [totalPaginas]="personajeListType().pages"
+      [totalElementos]="personajeListType().count"
+      (paginaCambiada)="cambiarPagina($event)">
+    </app-paginacion-shared>
+    <!-- Lista de personajes -->
+    <app-seccion-lista-personaje
+      [personajesPaginados]="personajeListType()">
+    </app-seccion-lista-personaje>
+
+    <!-- Componente de paginación -->
+    <app-paginacion-shared
+      [paginaActual]="paginaActual()"
+      [totalPaginas]="personajeListType().pages"
+      [totalElementos]="personajeListType().count"
+      (paginaCambiada)="cambiarPagina($event)">
+    </app-paginacion-shared>
   }
 </main>

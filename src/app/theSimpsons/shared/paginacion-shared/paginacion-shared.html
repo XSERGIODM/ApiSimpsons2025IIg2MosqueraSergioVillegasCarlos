@@ -1,0 +1,46 @@
+<nav class="flex justify-center items-center gap-2 py-8">
+  <!-- Botón Anterior -->
+  <button
+    (click)="cambiarPagina(paginaActual() - 1)"
+    [disabled]="paginaActual() === 1"
+    class="px-4 py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600
+               transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+    Anterior
+  </button>
+
+  <!-- Números de página -->
+  <div class="flex gap-1">
+    @for (pagina of obtenerPaginas(); track $index) {
+      @if (pagina === '...') {
+        <span class="px-3 py-2 text-blue-900">...</span>
+      } @else {
+        <button
+          (click)="cambiarPagina(numberAttribute(pagina))"
+          [class.bg-yellow-400]="pagina === paginaActual()"
+          [class.text-blue-900]="pagina === paginaActual()"
+          [class.font-bold]="pagina === paginaActual()"
+          [class.bg-white]="pagina !== paginaActual()"
+          [class.text-blue-600]="pagina !== paginaActual()"
+          class="px-4 py-2 rounded-lg font-semibold hover:bg-yellow-300
+                     transition-colors shadow-sm">
+          {{ pagina }}
+        </button>
+      }
+    }
+  </div>
+
+  <!-- Botón Siguiente -->
+  <button
+    (click)="cambiarPagina(paginaActual() + 1)"
+    [disabled]="paginaActual() === totalPaginas()"
+    class="px-4 py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600
+               transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+    Siguiente
+  </button>
+</nav>
+
+<!-- Información adicional -->
+<div class="text-center text-blue-900/75 pb-8">
+  Página {{ paginaActual() }} de {{ totalPaginas() }}
+  ({{ totalElementos() }} personajes)
+</div>

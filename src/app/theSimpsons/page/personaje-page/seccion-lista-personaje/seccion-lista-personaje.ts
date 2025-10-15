@@ -10,7 +10,5 @@ import {PersonajeListType} from '../../../type/PersonajeType';
   templateUrl: './seccion-lista-personaje.html',
 })
 export class SeccionListaPersonaje {
-
   personajesPaginados = input.required<PersonajeListType>();
-
 }
