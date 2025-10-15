@@ -20,4 +20,8 @@ import {SeccionInformacionGeneralHome} from './seccion-informacion-general-home/
 })
 export default class HomePage {
 
+  constructor() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
 }
