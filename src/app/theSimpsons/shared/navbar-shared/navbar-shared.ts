@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {RutasType, RutaType} from '../../type/RutaType';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 
@@ -12,5 +12,14 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
   styleUrl: './navbar-shared.css'
 })
 export class NavbarShared {
-  rutas:RutaType[]= RutasType;
+  rutas: RutaType[] = RutasType;
+  isMenuOpen = signal(false);
+
+  toggleMenu() {
+    this.isMenuOpen.set(!this.isMenuOpen());
+  }
+
+  closeMenu() {
+    this.isMenuOpen.set(false);
+  }
 }
