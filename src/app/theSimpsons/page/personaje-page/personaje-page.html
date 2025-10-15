@@ -6,6 +6,9 @@
       <app-loader-shared></app-loader-shared>
     </div>
   } @else {
+    <app-buscar-shared
+      (busquedaRealizada)="realizarBusqueda($event)">
+    </app-buscar-shared>
     <app-paginacion-shared
       [paginaActual]="paginaActual()"
       [totalPaginas]="personajeListType().pages"

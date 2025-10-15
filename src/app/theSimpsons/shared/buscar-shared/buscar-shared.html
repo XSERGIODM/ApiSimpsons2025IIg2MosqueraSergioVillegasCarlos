@@ -1,0 +1,40 @@
+<div class="max-w-2xl mx-auto px-4 py-6">
+  <div class="relative">
+    <div class="absolute left-4 top-1/2 -translate-y-1/2 text-blue-400">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    </div>
+
+    <input
+      type="text"
+      [(ngModel)]="terminoBusqueda"
+      (ngModelChange)="programarBusqueda()"
+      placeholder="Buscar personajes por nombre u ocupación..."
+      class="w-full pl-14 pr-28 py-4 rounded-full border-4 border-yellow-400
+                 bg-white text-blue-900 placeholder-blue-400 font-semibold
+                 focus:outline-none focus:border-blue-500 focus:ring-4
+                 focus:ring-blue-200 transition-all shadow-lg"
+    />
+
+    @if (terminoBusqueda()) {
+      <button
+        (click)="limpiar()"
+        class="absolute right-2 top-1/2 -translate-y-1/2
+                   px-4 py-2 bg-pink-400 text-white rounded-full font-semibold
+                   hover:bg-pink-500 transition-colors shadow-md flex items-center gap-1"
+        type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        Limpiar
+      </button>
+    }
+  </div>
+
+  @if (terminoBusqueda()) {
+    <p class="mt-3 text-center text-blue-900/75">
+      Buscando: <strong class="text-blue-900">"{{ terminoBusqueda() }}"</strong>
+    </p>
+  }
+</div>

@@ -51,6 +51,7 @@ export default class DestallePersonajePage implements OnInit {
     this.personajeService.obtenerPersonajePorId(this.rutaActiva()).subscribe(data => {
       this.personaje.set(data);
     });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
 

@@ -5,6 +5,12 @@
   @if (episodiosService.cargando()){
     <div class="h-screen"><app-loader-shared></app-loader-shared></div>
   } @else {
+    <app-paginacion-shared
+      [paginaActual]="paginaActual()"
+      [totalPaginas]="episodioListType().pages"
+      [totalElementos]="episodioListType().count"
+      (paginaCambiada)="cambiarPagina($event)">
+    </app-paginacion-shared>
     <app-seccion-lista-episodios [episodioListaPaginados]="episodioListType()"></app-seccion-lista-episodios>
   }
 </main>

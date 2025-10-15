@@ -5,6 +5,18 @@
   @if (lugarService.cargando()){
     <div class="h-screen"><app-loader-shared></app-loader-shared></div>
   } @else {
+    <app-paginacion-shared
+      [paginaActual]="paginaActual()"
+      [totalPaginas]="lugares().pages"
+      [totalElementos]="lugares().count"
+      (paginaCambiada)="cambiarPagina($event)">
+    </app-paginacion-shared>
     <app-seccion-lista-lugares [listaLugaresPaginado]= "lugares()"></app-seccion-lista-lugares>
+    <app-paginacion-shared
+      [paginaActual]="paginaActual()"
+      [totalPaginas]="lugares().pages"
+      [totalElementos]="lugares().count"
+      (paginaCambiada)="cambiarPagina($event)">
+    </app-paginacion-shared>
   }
 </main>

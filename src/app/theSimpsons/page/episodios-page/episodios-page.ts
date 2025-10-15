@@ -4,13 +4,16 @@ import {SeccionListaEpisodios} from './seccion-lista-episodios/seccion-lista-epi
 import {EpisodiosService} from '../../service/episodios-service';
 import type {EpisodiosListType} from '../../type/EpisodiosType';
 import {LoaderShared} from '../../shared/loader-shared/loader-shared';
+import {PaginacionShared} from '../../shared/paginacion-shared/paginacion-shared';
+
 
 @Component({
   selector: 'app-episodios-page',
   imports: [
     HeaderEpisodios,
     SeccionListaEpisodios,
-    LoaderShared
+    LoaderShared,
+    PaginacionShared
   ],
   templateUrl: './episodios-page.html',
 })
@@ -30,7 +33,15 @@ export default class EpisodiosPage {
     });
   }
 
+  paginaActual = signal<number>(1);
+  cambiarPagina($event: number) {
+    this.paginaActual.set($event);
+    this.obtenerEpisodios($event);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   constructor() {
     this.obtenerEpisodios(0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
